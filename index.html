@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTG</title>
+</head>
+<body>
+    <style>
+        #table{
+            margin-top:30px;
+        }
+    </style>
+    <h1>Multiplication Table Generator</h1>
+    <p>Please enter numbers between 2 and 10</p>
+
+    <label for="start">Enter your start value:</label>
+    <input type="number" id="start" name="start"><br><br>
+    <label for="end">Enter your end value:</label>
+    <input type="number" id="end" name="end"><br><br>
+    <button onclick="generateTable();">Generate Multiplication Table</button>
+    <div id="table"></div>
+
+    <script>
+        function generateTable() {
+            var start = parseInt(document.getElementById('start').value);
+            var end = parseInt(document.getElementById('end').value);
+
+            if (start < 2 || start > 10 || isNaN(start) || end < 2 || end > 10 || isNaN(end)) {
+                alert("Please enter numbers between 2 and 10");
+                return;
+            }
+            
+            var table = "<table border='1'>\n";
+            for (var row = 1; row <= start; row++) {
+                table += "<tr>";
+                for (var column = 1; column <= end; column++) {
+                    table += `<td>${column * row}</td>`;
+                }
+                table += "</tr>\n";
+            }
+            table += "</table>";
+
+            document.getElementById("table").innerHTML = table;
+        }
+    </script>
+</body>
+</html>
